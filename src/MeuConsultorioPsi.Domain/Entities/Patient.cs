@@ -39,7 +39,7 @@ public class Patient
     {
         if (string.IsNullOrWhiteSpace(name))
         {
-            throw new ArgumentNullException(nameof(name), "É obrigatório enviar um modelo de paciente completo.")
+            throw new ArgumentNullException(nameof(name), "É obrigatório enviar um modelo de paciente completo.");
         }
         if (birthDate == default)
         {
@@ -47,7 +47,7 @@ public class Patient
         }
         if (birthDate > DateTime.Now)
         {
-            throw new ArgumentException(nameof(birthDate), "A data de nascimento não pode ser no futuro")
+            throw new ArgumentException(nameof(birthDate), "A data de nascimento não pode ser no futuro");
         }
 
 
