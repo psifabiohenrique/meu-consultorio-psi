@@ -40,4 +40,28 @@ public class Treatment
             IsActive = true
         };
     }
+
+    public void Update(Guid therapistId, Guid patientId, DateTime startDate, DateTime? endDate, bool isActive)
+    {
+        if (therapistId == Guid.Empty)
+        {
+            throw new ArgumentException("O ID do terapeuta é obrigatório", nameof(therapistId));
+        }
+
+        if (patientId == Guid.Empty)
+        {
+            throw new ArgumentException("O ID do paciente é obrigatório", nameof(patientId));
+        }
+
+        if (startDate == default)
+        {
+            throw new ArgumentException("A data de início é obrigatória", nameof(startDate));
+        }
+
+        TherapistId = therapistId;
+        PatientId = patientId;
+        StartDate = startDate;
+        EndDate = endDate;
+        IsActive = isActive;
+    }
 }

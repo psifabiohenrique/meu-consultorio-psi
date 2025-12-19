@@ -1,5 +1,6 @@
 using MeuConsultorioPsi.Application.Services.Patient;
 using MeuConsultorioPsi.Application.Services.Therapist;
+using MeuConsultorioPsi.Application.Services.Treatment;
 using MeuConsultorioPsi.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,12 @@ builder.Services.AddScoped<CreateTherapistService>();
 builder.Services.AddScoped<ReadTherapistService>();
 builder.Services.AddScoped<ReadAllTherapistsService>();
 builder.Services.AddScoped<UpdateTherapistService>();
+
+// Registrar serviços de Treatment
+builder.Services.AddScoped<CreateTreatmentService>();
+builder.Services.AddScoped<ReadAllTreatmentsService>();
+builder.Services.AddScoped<ReadTreatmentService>();
+builder.Services.AddScoped<UpdateTreatmentService>();
 
 builder.Services.AddControllers();
 
