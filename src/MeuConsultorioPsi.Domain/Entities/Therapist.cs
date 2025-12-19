@@ -8,5 +8,24 @@ public class Therapist
     public string Name { get; private set; }
     public string LicenseNumber { get; private set; }
 
-    protected Therapist() {}
+    protected Therapist() { }
+
+    public static Therapist Create(string name, string licenseNumber)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentNullException("O Nome é obrigatório");
+        }
+        if (string.IsNullOrWhiteSpace(licenseNumber))
+        {
+            throw new ArgumentNullException("O número de licença é obrigatório");
+        }
+
+        return new Therapist
+        {
+            Id = Guid.NewGuid(),
+            Name = name,
+            LicenseNumber = licenseNumber
+        };
+    }
 }

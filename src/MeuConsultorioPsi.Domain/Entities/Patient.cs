@@ -9,4 +9,29 @@ public class Patient
     public DateTime BirthDate { get; private set; }
 
     protected Patient() { }
+
+    public static Patient Create(string name, DateTime birthDate)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentNullException(nameof(name), "O nome é obrigatório");
+        }
+
+        if (birthDate == default)
+        {
+            throw new ArgumentException("A data de nascimento é obrigatória", nameof(birthDate));
+        }
+
+        if (birthDate > DateTime.Now)
+        {
+            throw new ArgumentException("A data de nascimento não pode ser no futuro", nameof(birthDate));
+        }
+
+        return new Patient
+        {
+            Id = Guid.NewGuid(),
+            Name = name,
+            BirthDate = birthDate
+        };
+    }
 }
