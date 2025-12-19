@@ -1,6 +1,4 @@
 using System;
-using MeuConsultorioPsi.Domain
-
 using MeuConsultorioPsi.Domain.Enums;
 
 namespace MeuConsultorioPsi.Application.Dtos.Appointment;

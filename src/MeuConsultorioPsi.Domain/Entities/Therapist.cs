@@ -28,4 +28,19 @@ public class Therapist
             LicenseNumber = licenseNumber
         };
     }
+
+    public void Update(string name, string licenseNumber)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentNullException(nameof(name), "O Nome é obrigatório");
+        }
+        if (string.IsNullOrWhiteSpace(licenseNumber))
+        {
+            throw new ArgumentNullException(nameof(licenseNumber), "O número de licença é obrigatório");
+        }
+
+        Name = name;
+        LicenseNumber = licenseNumber;
+    }
 }
