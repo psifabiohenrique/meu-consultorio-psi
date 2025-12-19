@@ -1,10 +1,24 @@
+using MeuConsultorioPsi.Application.Services.Patient;
+using MeuConsultorioPsi.Application.Services.Therapist;
 using MeuConsultorioPsi.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connection = builder.Configuration.GetConnectionString("DefaultConnection");
+var connection = builder.Configuration.GetConnectionString("sqlite");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite(connection));
+
+// Registrar serviços de Patient
+builder.Services.AddScoped<CreatePatientService>();
+builder.Services.AddScoped<ReadPatientService>();
+builder.Services.AddScoped<ReadAllPatientsService>();
+builder.Services.AddScoped<UpdatePatientService>();
+
+// Registrar serviços de Therapist
+builder.Services.AddScoped<CreateTherapistService>();
+builder.Services.AddScoped<ReadTherapistService>();
+builder.Services.AddScoped<ReadAllTherapistsService>();
+builder.Services.AddScoped<UpdateTherapistService>();
 
 builder.Services.AddControllers();
 

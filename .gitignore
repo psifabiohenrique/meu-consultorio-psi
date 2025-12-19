@@ -56,3 +56,4 @@ nunit-*.xml
 /.vs/ProjectEvaluation
 /.vs/CopilotSnapshots/274B82104DACEF42B235A4A36D9EA122
 /.vs/CopilotSnapshots/2DD5BAC9162DBA45A1ADA82B56EF6AB3
+*.db

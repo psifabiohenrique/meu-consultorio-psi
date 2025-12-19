@@ -34,4 +34,24 @@ public class Patient
             BirthDate = birthDate
         };
     }
+
+    public void Update(string name, DateTime birthDate)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentNullException(nameof(name), "É obrigatório enviar um modelo de paciente completo.")
+        }
+        if (birthDate == default)
+        {
+            throw new ArgumentException(nameof(birthDate), "A data de nascimento é obrigatório");
+        }
+        if (birthDate > DateTime.Now)
+        {
+            throw new ArgumentException(nameof(birthDate), "A data de nascimento não pode ser no futuro")
+        }
+
+
+        Name = name;
+        BirthDate = birthDate;
+    }
 }
