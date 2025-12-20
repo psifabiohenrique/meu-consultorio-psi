@@ -1,4 +1,5 @@
 using MeuConsultorioPsi.Application.Services.Patient;
+using MeuConsultorioPsi.Application.Services.RecurrenceRule;
 using MeuConsultorioPsi.Application.Services.Therapist;
 using MeuConsultorioPsi.Application.Services.Treatment;
 using MeuConsultorioPsi.Infrastructure;
@@ -9,23 +10,30 @@ var builder = WebApplication.CreateBuilder(args);
 var connection = builder.Configuration.GetConnectionString("sqlite");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite(connection));
 
-// Registrar serviÁos de Patient
+// Registrar servi√ßos de Patient
 builder.Services.AddScoped<CreatePatientService>();
 builder.Services.AddScoped<ReadPatientService>();
 builder.Services.AddScoped<ReadAllPatientsService>();
 builder.Services.AddScoped<UpdatePatientService>();
 
-// Registrar serviÁos de Therapist
+// Registrar servi√ßos de Therapist
 builder.Services.AddScoped<CreateTherapistService>();
 builder.Services.AddScoped<ReadTherapistService>();
 builder.Services.AddScoped<ReadAllTherapistsService>();
 builder.Services.AddScoped<UpdateTherapistService>();
 
-// Registrar serviÁos de Treatment
+// Registrar servi√ßos de Treatment
 builder.Services.AddScoped<CreateTreatmentService>();
 builder.Services.AddScoped<ReadAllTreatmentsService>();
 builder.Services.AddScoped<ReadTreatmentService>();
 builder.Services.AddScoped<UpdateTreatmentService>();
+
+// Registrar servi√ßos de RecurrenceRule
+builder.Services.AddScoped<CreateRecurrenceRuleService>();
+builder.Services.AddScoped<ReadAllRecurrenceRulesService>();
+builder.Services.AddScoped<ReadRecurrenceRuleService>();
+builder.Services.AddScoped<UpdateRecurrenceRuleService>();
+
 
 builder.Services.AddControllers();
 

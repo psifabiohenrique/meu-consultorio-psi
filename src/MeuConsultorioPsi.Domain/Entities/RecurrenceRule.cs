@@ -9,7 +9,7 @@ public class RecurrenceRule
     public Guid TreatmentId { get; private set; }
     public RecurrenceFrequency Frequency { get; private set; }
     public DayOfWeek DayOfWeek { get; private set; }
-    public TimeSpan StartTime { get; private set; }
+    public TimeOnly StartTime { get; private set; }
     public int DurationMinutes { get; private set; }
     public bool IsActive { get; private set; }
 
@@ -19,7 +19,7 @@ public class RecurrenceRule
         Guid treatmentId,
         RecurrenceFrequency frequency,
         DayOfWeek dayOfWeek,
-        TimeSpan startTime,
+        TimeOnly startTime,
         int durationMinutes)
     {
         if (treatmentId == Guid.Empty)
@@ -37,11 +37,6 @@ public class RecurrenceRule
             throw new ArgumentException("O dia da semana é inválido", nameof(dayOfWeek));
         }
 
-        if (startTime < TimeSpan.Zero || startTime >= TimeSpan.FromHours(24))
-        {
-            throw new ArgumentException("A hora de início deve estar entre 00:00 e 23:59", nameof(startTime));
-        }
-
         if (durationMinutes <= 0 || durationMinutes > 480)
         {
             throw new ArgumentException("A duração deve estar entre 1 e 480 minutos", nameof(durationMinutes));
@@ -57,5 +52,42 @@ public class RecurrenceRule
             DurationMinutes = durationMinutes,
             IsActive = true
         };
+    }
+
+    public void Update(
+        Guid treatmentId,
+        RecurrenceFrequency frequency,
+        DayOfWeek dayOfWeek,
+        TimeOnly startTime,
+        int durationMinutes,
+        bool isActive
+        )
+    {
+        if (treatmentId == Guid.Empty)
+        {
+            throw new ArgumentException("O ID do tratamento é obrigatório", nameof(treatmentId));
+        }
+
+        if (!Enum.IsDefined(typeof(RecurrenceFrequency), frequency))
+        {
+            throw new ArgumentException("A frequência de recorrência é inválida", nameof(frequency));
+        }
+
+        if (!Enum.IsDefined(typeof(DayOfWeek), dayOfWeek))
+        {
+            throw new ArgumentException("O dia da semana é inválido", nameof(dayOfWeek));
+        }
+
+        if (durationMinutes <= 0 || durationMinutes > 480)
+        {
+            throw new ArgumentException("A duração deve estar entre 1 e 480 minutos", nameof(durationMinutes));
+        }
+
+        TreatmentId = treatmentId;
+        Frequency = frequency;
+        DayOfWeek = dayOfWeek;
+        StartTime = startTime;
+        DurationMinutes = durationMinutes;
+        IsActive = true;
     }
 }

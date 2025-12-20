@@ -16,8 +16,11 @@ public class CreateRecurrenceRule
     public DayOfWeek DayOfWeek { get; set; }
 
     [Required(ErrorMessage = "A hora de início é obrigatória")]
-    [DataType(DataType.DateTime, ErrorMessage = "Hora de início inválida")]
-    public TimeSpan StartTime { get; set; }
+    [RegularExpression(
+        @"^([01]\d|2[0-3]):[0-5]\d$",
+        ErrorMessage = "StartTime deve estar no formato HH:mm (00:00–23:59)"
+    )]
+    public string StartTime { get; set; }
 
     [Required(ErrorMessage = "A duração em minutos é obrigatória")]
     [Range(1, 480, ErrorMessage = "A duração deve estar entre 1 e 480 minutos")]

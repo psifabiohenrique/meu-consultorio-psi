@@ -9,7 +9,7 @@ public class ReadRecurrenceRule
     public Guid TreatmentId { get; set; }
     public RecurrenceFrequency Frequency { get; set; }
     public DayOfWeek DayOfWeek { get; set; }
-    public TimeSpan StartTime { get; set; }
+    public string StartTime { get; set; }
     public int DurationMinutes { get; set; }
     public bool IsActive { get; set; }
 }

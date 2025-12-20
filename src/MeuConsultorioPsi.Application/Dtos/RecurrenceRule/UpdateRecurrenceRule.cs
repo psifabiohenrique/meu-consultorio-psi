@@ -6,23 +6,22 @@ namespace MeuConsultorioPsi.Application.Dtos.RecurrenceRule;
 
 public class UpdateRecurrenceRule
 {
-    [Required(ErrorMessage = "O ID do tratamento é obrigatório")]
+    [Required(ErrorMessage = "O ID do tratamento ï¿½ obrigatï¿½rio")]
     public Guid TreatmentId { get; set; }
 
-    [Required(ErrorMessage = "A frequência é obrigatória")]
+    [Required(ErrorMessage = "A frequï¿½ncia ï¿½ obrigatï¿½ria")]
     public RecurrenceFrequency Frequency { get; set; }
 
-    [Required(ErrorMessage = "O dia da semana é obrigatório")]
+    [Required(ErrorMessage = "O dia da semana ï¿½ obrigatï¿½rio")]
     public DayOfWeek DayOfWeek { get; set; }
 
-    [Required(ErrorMessage = "A hora de início é obrigatória")]
-    [DataType(DataType.DateTime, ErrorMessage = "Hora de início inválida")]
-    public TimeSpan StartTime { get; set; }
+    [Required(ErrorMessage = "A hora de inï¿½cio ï¿½ obrigatï¿½ria")]
+    public string StartTime { get; set; }
 
-    [Required(ErrorMessage = "A duração em minutos é obrigatória")]
-    [Range(1, 480, ErrorMessage = "A duração deve estar entre 1 e 480 minutos")]
+    [Required(ErrorMessage = "A duraï¿½ï¿½o em minutos ï¿½ obrigatï¿½ria")]
+    [Range(1, 480, ErrorMessage = "A duraï¿½ï¿½o deve estar entre 1 e 480 minutos")]
     public int DurationMinutes { get; set; }
 
-    [Required(ErrorMessage = "O status ativo/inativo é obrigatório")]
+    [Required(ErrorMessage = "O status ativo/inativo ï¿½ obrigatï¿½rio")]
     public bool IsActive { get; set; }
 }
