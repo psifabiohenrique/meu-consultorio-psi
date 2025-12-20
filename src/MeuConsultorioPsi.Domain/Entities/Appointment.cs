@@ -17,22 +17,22 @@ public class Appointment
     {
         if (treatmentId == Guid.Empty)
         {
-            throw new ArgumentException("O ID do tratamento é obrigatório", nameof(treatmentId));
+            throw new ArgumentException("O ID do tratamento ï¿½ obrigatï¿½rio", nameof(treatmentId));
         }
 
         if (startAt == default)
         {
-            throw new ArgumentException("A data e hora de início são obrigatórias", nameof(startAt));
+            throw new ArgumentException("A data e hora de inï¿½cio sï¿½o obrigatï¿½rias", nameof(startAt));
         }
 
         if (endAt == default)
         {
-            throw new ArgumentException("A data e hora de término são obrigatórias", nameof(endAt));
+            throw new ArgumentException("A data e hora de tï¿½rmino sï¿½o obrigatï¿½rias", nameof(endAt));
         }
 
         if (endAt <= startAt)
         {
-            throw new ArgumentException("A data e hora de término deve ser posterior ao início", nameof(endAt));
+            throw new ArgumentException("A data e hora de tï¿½rmino deve ser posterior ao inï¿½cio", nameof(endAt));
         }
 
         return new Appointment
@@ -43,5 +43,33 @@ public class Appointment
             EndAt = endAt,
             Status = AppointmentStatus.Scheduled
         };
+    }
+
+    public void Update(Guid treatmentId, DateTime startAt, DateTime endAt, AppointmentStatus status)
+    {
+        if (treatmentId == Guid.Empty)
+        {
+            throw new ArgumentException("O ID do tratamento ï¿½ obrigatï¿½rio", nameof(treatmentId));
+        }
+
+        if (startAt == default)
+        {
+            throw new ArgumentException("A data e hora de inï¿½cio sï¿½o obrigatï¿½rias", nameof(startAt));
+        }
+
+        if (endAt == default)
+        {
+            throw new ArgumentException("A data e hora de tï¿½rmino sï¿½o obrigatï¿½rias", nameof(endAt));
+        }
+
+        if (endAt <= startAt)
+        {
+            throw new ArgumentException("A data e hora de tï¿½rmino deve ser posterior ao inï¿½cio", nameof(endAt));
+        }
+        
+        TreatmentId = treatmentId;
+        StartAt = startAt;
+        EndAt = endAt;
+        Status = status;
     }
 }

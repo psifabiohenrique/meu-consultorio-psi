@@ -1,3 +1,4 @@
+using MeuConsultorioPsi.Application.Services.Appointment;
 using MeuConsultorioPsi.Application.Services.Patient;
 using MeuConsultorioPsi.Application.Services.RecurrenceRule;
 using MeuConsultorioPsi.Application.Services.Therapist;
@@ -33,6 +34,12 @@ builder.Services.AddScoped<CreateRecurrenceRuleService>();
 builder.Services.AddScoped<ReadAllRecurrenceRulesService>();
 builder.Services.AddScoped<ReadRecurrenceRuleService>();
 builder.Services.AddScoped<UpdateRecurrenceRuleService>();
+
+// Registrar serviços de Appointment
+builder.Services.AddScoped<CreateAppointmentService>();
+builder.Services.AddScoped<ReadAllAppointmentsService>();
+builder.Services.AddScoped<ReadAppointmentService>();
+builder.Services.AddScoped<UpdateAppointmentService>();
 
 
 builder.Services.AddControllers();
