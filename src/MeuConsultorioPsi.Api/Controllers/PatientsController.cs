@@ -32,9 +32,9 @@ public class PatientsController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ReadPatient>>> GetAll()
+    public async Task<ActionResult<IEnumerable<ReadPatient>>> GetAll(int? pageNumber = null, int? pageSize = null)
     {
-        var result = await _readAllPatientsService.ExecuteAsync();
+        var result = await _readAllPatientsService.ExecuteAsync(pageNumber, pageSize);
         return Ok(result);
     } 
 
@@ -46,7 +46,7 @@ public class PatientsController : ControllerBase
     }
 
     [HttpGet("by-therapist/{therapistId}")]
-    public async Task<ActionResult<IEnumerable<ReadPatient>>> GetByTherapist(Guid therapistId, [FromQuery] int? pageNumber = null, [FromQuery] int? pageSize = null)
+    public async Task<ActionResult<IEnumerable<ReadPatient>>> GetByTherapist(Guid therapistId, int? pageNumber = null, int? pageSize = null)
     {
         var result = await _readAllPatientsService.ExecuteAsync(therapistId, pageNumber, pageSize);
         return Ok(result);
